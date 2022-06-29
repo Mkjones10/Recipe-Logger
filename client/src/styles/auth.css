@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.rock{
+    color: rgb(49, 157, 245);
+}
+.inputs{
+    display: block;
+    width: 300px;
+    height: 50px;
+    margin: auto;
+    margin-top: 15px
+}
+.btn{
+    width: 300px;
+    height: 50px;
+    margin-top: 20px
+}
+.mem{
+    width: 300px;
+    height: 50px;
+    margin-top: 20px;
+    margin-right: 5px;
+}
