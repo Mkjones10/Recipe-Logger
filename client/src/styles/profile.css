@@ -1,0 +1,50 @@
+.profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.profile-form{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    border: 1px solid darkgray;
+    width: 600px;
+    height: 300px;
+    background-color: lightgray;
+    padding: 15px;
+    margin: auto;
+    text-align: center
+}
+.pin{
+    display: block;
+    width: 300px;
+    height: 50px;
+    margin: auto;
+    margin-top: 15px
+}
+
+
+.k{
+    
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid darkgray;
+        width: 600px;
+        height: 300px;
+        padding: 15px;
+        margin-top: 10px;
+        text-align: center;
+       
+    
+}
+
+.ingbtn{
+    background-color: blue;
+    color: #ccc;
+    width:200px;
+}

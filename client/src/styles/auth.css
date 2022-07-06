@@ -3,25 +3,43 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    
 }
 .rock{
-    color: rgb(49, 157, 245);
+    color: #EE82EE;
 }
 .inputs{
-    display: block;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #ccc;
     width: 300px;
-    height: 50px;
-    margin: auto;
-    margin-top: 15px
+    font-size: 18px;
+    border-radius: 10px;
 }
 .btn{
+    font-size: 18px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    color: #fff;
+    background:  #2554C7;
+    margin-left: 15px;
+    border-radius: 5px;
+    outline: none;
     width: 300px;
     height: 50px;
-    margin-top: 20px
 }
 .mem{
+    font-size: 18px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    color: #fff;
+    background:  #488AC7;
+    margin-left: 10px;
+    border-radius: 5px;
+    outline: none;
     width: 300px;
     height: 50px;
-    margin-top: 20px;
-    margin-right: 5px;
 }

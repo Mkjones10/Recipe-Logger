@@ -2,35 +2,20 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const recipeSchema = new Schema({
-    title:{
+    strMeal:{
         type:String,
         required:true
     },
-    instructions:{
+    strInstructions:{
         type: String,
         required: true
     },
-    time:{
-        type: String
-    },
-    ingredientS:{
+    
+    strIngredients:{
         type: String,
         required: true
     },
-    upVotes:[{
-        user: {
-            type: Schema.Types.ObjectId
-        }
-    }],
-    downVotes:[{
-        user: {
-            type: Schema.Types.ObjectId
-        }
-    }],
-    votesTotal: {
-        type: Number,
-        default: 0
-    },
+    
     user:{
         type:Schema.Types.ObjectId,
         ref:"User",

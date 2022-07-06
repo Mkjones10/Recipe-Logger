@@ -2,6 +2,9 @@ import React from 'react'
 import IngredientsForm from './IngredientsForm'
 import IngredientsList from './IngredientsList'
 import { UserContext } from '../context/UserProvider'
+import '../styles/profile.css'
+import Favorite from './Favorite'
+
 export default function Profile() {
     const { user: { username }, addIngredients, getUserIngredients } = React.useContext(UserContext)
    
@@ -14,10 +17,14 @@ export default function Profile() {
                     </h1>
                     <h2 className='add'> Add Ingredients</h2>
                     <IngredientsForm addIngredients ={addIngredients}/>
-                    <div className="my">Ingredient List</div>
+                    <h2> Ingredient List</h2>
                     <div className="li">
                         <IngredientsList/>
                     </div>
+                </div>
+                <div className="favs">
+                   
+                    <Favorite/>
                 </div>
             </>
 

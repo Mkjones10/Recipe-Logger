@@ -14,7 +14,7 @@ function UserProvider(props) {
     const initState = {
         user: JSON.parse(localStorage.getItem('user')) || {},
         token: localStorage.getItem('token') || '',
-        recipe: [],
+        favorites: [],
         ingredients: [],
         errMsg: '',
         comments: []
@@ -95,12 +95,12 @@ function UserProvider(props) {
         userAxios.get(`/api/ingredients/${userState.user._id}`)
             .then(res => setUserState(prevUserState => ({
                 ...prevUserState,
-                ingredients: [res.data]
+                ingredients: res.data
             })))
             .catch(err => console.log(err.response.data.errMsg))
     }
     function addIngredients(newIngredients) {
-        userAxios.post('/api/ingredients', newIngredients)
+        userAxios.post(`/api/ingredients`, newIngredients)
             .then(res => {
                 setUserState(prevUserState => ({
                     ...prevUserState,
@@ -109,12 +109,13 @@ function UserProvider(props) {
                     ]
                 }))
             })
+            .catch(err => console.log(err))
     }
     function getUserRecipes() {
         userAxios.post(`/api/recipe/${userState.user._id}`)
             .then(res => setUserState(prevUserState => ({
                 ...prevUserState,
-                recipe: [res.data]
+                recipe: res.data
             })))
             .catch(err => console.log(err))
     }
@@ -124,7 +125,7 @@ function UserProvider(props) {
             .catch(err => console.log(err))
     }
     function addRecipes(newRecipe) {
-        userAxios.post('/api/recipe', newRecipe)
+        userAxios.post(`/api/recipe`, newRecipe)
             .then(res => {
                 setUserState(prevUserState => ({
                     ...prevUserState,
@@ -180,7 +181,8 @@ function UserProvider(props) {
                 setMeals,
                 search,
                 setSearch,
-                getRecipes
+                getRecipes,
+                message
             }}>
                 {props.children}
         </UserContext.Provider>

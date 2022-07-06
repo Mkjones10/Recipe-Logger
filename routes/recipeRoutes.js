@@ -14,8 +14,10 @@ recipeRouter.get('/', (req, res, next) => {
 })
 
 recipeRouter.post('/', (req, res, next) => {
+    console.log(req.body)
     req.body.user = req.auth._id
     const recipe = new Recipe(req.body)
+    
     recipe.save((err, newRecipe) => {
         if (err) {
             res.status(500)

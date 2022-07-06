@@ -1,0 +1,92 @@
+.search{
+    
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+.head{
+    background-image: linear-gradient(rgba(0,0,0,0.6) , rgba(0,0,0,0.8)),
+    url("https://media.istockphoto.com/photos/food-backgrounds-table-filled-with-large-variety-of-food-picture-id1155240408?k=20&m=1155240408&s=612x612&w=0&h=Zvr3TwVQ-wlfBnvGrgJCtv-_P_LUcIK301rCygnirbk=");
+    height: 500px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.input{
+    margin: 10px 0;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #ccc;
+    width: 500px;
+    font-size: 18px;
+    border-radius: 10px;
+}
+.searchbtn{
+    font-size: 18px;
+    border: 1px solid #ff4500;
+    padding: 5px;
+    color: #fff;
+    background: 	#FF4500;
+    margin-left: 10px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition:  .4 ease ;
+
+   
+    
+}
+
+.result{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+   
+    flex-wrap: wrap;
+    cursor: pointer;
+
+    
+}
+.meal{
+    text-align: center;
+}
+.img{
+    width: 200px;
+    border: 1px solid #ccc;
+    margin: 10px;
+    transition: all .4 ease ;
+    border-radius: 10px;
+}
+.img:hover{
+    transform: scale(1.1);
+}
+.in{
+    width: 200px;
+}
+.btn{
+    background-color: blue;
+    color: #fff;
+    cursor: help;
+}
+.btn1{
+    background-color: grey;
+    color: #ccc;
+    width:200px;
+  
+}
+.btn2{
+    background-color: blue;
+    color: #ccc;
+    width: 200px;
+
+}
+.h1{
+    color: #ccc;
+}
