@@ -14,7 +14,7 @@ function UserProvider(props) {
     const initState = {
         user: JSON.parse(localStorage.getItem('user')) || {},
         token: localStorage.getItem('token') || '',
-        favorites: [],
+        recipe: [],
         ingredients: [],
         errMsg: '',
         comments: []
@@ -112,8 +112,8 @@ function UserProvider(props) {
             .catch(err => console.log(err))
     }
     function getUserRecipes() {
-        userAxios.post(`/api/recipe/${userState.user._id}`)
-            .then(res => setUserState(prevUserState => ({
+        userAxios.get(`/api/recipe/${userState.user._id}`)
+            .then(res =>  setUserState(prevUserState => ({
                 ...prevUserState,
                 recipe: res.data
             })))
@@ -156,7 +156,9 @@ function UserProvider(props) {
     },[])
     React.useEffect(() => {
         getUserIngredients()
+        getUserRecipes()
     }, [])
+    
 
     return (
         <UserContext.Provider
@@ -182,7 +184,9 @@ function UserProvider(props) {
                 search,
                 setSearch,
                 getRecipes,
-                message
+                message,
+                userAxios,
+                setUserState
             }}>
                 {props.children}
         </UserContext.Provider>

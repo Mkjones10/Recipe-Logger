@@ -1,5 +1,5 @@
 const express = require('express')
-const recipe = require('../models/recipe')
+
 const recipeRouter = express.Router()
 const Recipe = require('../models/recipe')
 const User = require('../models/user')
