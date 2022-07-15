@@ -4,7 +4,7 @@ import '../styles/public.css'
 import RecipeInst from './RecipeInst'
 
 function Public() {
-    const { getUserRecipes, meals, setMeals, search, setSearch, getRecipes , message} = React.useContext(UserContext)
+    const { getUserRecipes, meals, setMeals, search, setSearch, getRecipes , message,allRecipes } = React.useContext(UserContext)
     function handleChange(event) {
         setSearch(event.target.value)
     }

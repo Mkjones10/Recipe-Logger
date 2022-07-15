@@ -113,10 +113,12 @@ function UserProvider(props) {
     }
     function getUserRecipes() {
         userAxios.get(`/api/recipe/${userState.user._id}`)
-            .then(res =>  setUserState(prevUserState => ({
+            .then(res => { 
+                console.log(userState.recipe)
+                setUserState(prevUserState => ({
                 ...prevUserState,
                 recipe: res.data
-            })))
+            }))})
             .catch(err => console.log(err))
     }
     function getAllRecipes() {

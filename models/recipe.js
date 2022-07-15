@@ -88,6 +88,9 @@ const recipeSchema = new Schema({
         ref:"User",
         required:true
     },
+    idMeal:{
+        type:String,
+    }
     
 })
 

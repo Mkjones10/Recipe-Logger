@@ -3,17 +3,23 @@ import { Modal, Button } from 'react-bootstrap'
 import { UserContext } from '../context/UserProvider'
 
 function RecipeInst(props) {
-  const meal = props
-  const { user, userAxios, setUserState, userState, setAllRecipes } = React.useContext(UserContext)
+  
+  const { user, userAxios, setUserState, userState, setAllRecipes , meals,} = React.useContext(UserContext)
   const [show, setShow] = useState(false);
-  const { meals, _id } = React.useContext(UserContext)
-
+  const {meal, _id} = props
+  const recipe = userState.recipe
+  console.log(recipe)
+  const id = recipe.map(ig =>{
+    return ig._id
+    })
+    
+  
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   function handleFavs() {
     userAxios.post('/api/recipe', props.meal)
       .then(res => {
-        console.log(props.meal)
+        
         setUserState(prevUserState => ({
           ...prevUserState,
           recipe: [...prevUserState.recipe, res.data]
@@ -22,13 +28,17 @@ function RecipeInst(props) {
       })
       .catch(err => console.log(err))
   }
-  function handleDeleteFav(_id) {
-    userAxios.delete(`/api/recipe/${userState.recipe._id}`, { userId: user._id })
-      .then(res => setAllRecipes(prevRecipes => prevRecipes.filter(recipes => recipes._id !== _id ? recipes : res.data)))
+  
+  function handleDeleteFav() {
+    userAxios.delete(`/api/recipe/${props.meal.idMeal}`)
+      .then(res => {
+        
+        setAllRecipes(prevRecipes => prevRecipes.filter(recipes => recipes._id !== _id ? recipes : res.data))})
       .catch(err => err.response.data.message)
   }
+  
   return (
-    
+   
     <>
       <Button variant="primary" onClick={handleShow}>
         See More!
@@ -65,16 +75,14 @@ function RecipeInst(props) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          {user && (
+          {
            
-            userState.recipe.forEach((item, props) => { 
-              (item.meal.idMeal === props.meal.idMeal ? (
-              
-                <Button variant='primary' onClick={handleFavs} >
-                  Add To Favorites
-                </Button>
+            userState.recipe.some(item => item.strMeal.includes(props.meal.strMeal) ) ?
+                (<Button variant="danger" onClick={() => handleDeleteFav(_id)}>Remove From Favorites</Button>
               ) :
-                (<Button variant="danger" onClick={handleDeleteFav}>Remove From Favorites</Button>) ) }))}
+                ( <Button variant='primary' onClick={handleFavs} >
+                Add To Favorites
+              </Button> )}
         </Modal.Footer>
 
       </Modal>
