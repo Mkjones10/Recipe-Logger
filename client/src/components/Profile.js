@@ -18,10 +18,11 @@ export default function Profile() {
                     <h2 className='add'> Add Ingredients</h2>
                     <IngredientsForm addIngredients ={addIngredients}/>
                     <h2> Ingredient List</h2>
+                    </div>
                     <div className="li">
                         <IngredientsList/>
                     </div>
-                </div>
+                
                 <div className="favs">
                    
                     <Favorite/>

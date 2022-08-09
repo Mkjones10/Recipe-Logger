@@ -50,13 +50,13 @@ recipeRouter.get('/:recipeId', (req, res, next) => {
 
 
 recipeRouter.delete('/:recipeId', (req, res, next) =>{
-    Recipe.findByIdAndDelete({_id: req.params.recipeId, user: req.auth._id}, (err, deletedRecipe) =>{
+    Recipe.findOneAndDelete({idMeal: req.params.recipeId, user: req.auth._id}, (err, deletedRecipe) => {
         if(err){
-            res.status(500)
+            res.status(404)
             return next(err)
         }
-        return res.status(200).send(`Successfully deleted ${deletedRecipe.strMeal}`)
+        console.log('successfully deleted: ', deletedRecipe)
+        return res.status(200).send(`Successfully deleted ${deletedRecipe}`)
     })
 })
-
 module.exports = recipeRouter

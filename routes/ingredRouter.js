@@ -52,12 +52,13 @@ ingredRouter.put('/:ingredId', (req, res, next) =>{
 })
 
 ingredRouter.delete('/:ingredId', (req, res, next) =>{
-    Ingredients.findByIdAndDelete({ _id: req.params.ingredId, user: req.auth._id }, (err, deletedIngred) => {
+    Ingredients.findByIdAndDelete({ _id:req.params.ingredId, user: req.auth._id }, (err, deletedIngred) => {
+        console.log(req.params.ingredId)
         if (err) {
             res.status(500)
             return next(err)
         }
-        return res.status(200).send(`Successfullt deleted ingredient: ${deletedIngred.name}`)
+        return res.status(200).send(deletedIngred )
     })
 })
 

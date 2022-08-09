@@ -1,49 +1,44 @@
 import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import { UserContext } from '../context/UserProvider'
-
 function RecipeInst(props) {
-  
-  const { user, userAxios, setUserState, userState, setAllRecipes , meals,} = React.useContext(UserContext)
+  const { user, userAxios, setUserState, userState, setAllRecipes , meals, allRecipes} = React.useContext(UserContext)
   const [show, setShow] = useState(false);
   const {meal, _id} = props
   const recipe = userState.recipe
-  console.log(recipe)
-  const id = recipe.map(ig =>{
-    return ig._id
-    })
-    
-  
+  console.log('all Recipes: ', allRecipes)
+  // const id = recipe.map(ig =>{
+  //   return ig._id
+  //   })
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   function handleFavs() {
     userAxios.post('/api/recipe', props.meal)
       .then(res => {
-        
         setUserState(prevUserState => ({
           ...prevUserState,
           recipe: [...prevUserState.recipe, res.data]
-
         }))
       })
       .catch(err => console.log(err))
   }
-  
   function handleDeleteFav() {
-    userAxios.delete(`/api/recipe/${props.meal.idMeal}`)
+    userAxios.delete(`/api/recipe/${_id}`)
       .then(res => {
-        
-        setAllRecipes(prevRecipes => prevRecipes.filter(recipes => recipes._id !== _id ? recipes : res.data))})
+        setUserState(userState => {
+          const filtered = userState.recipe.filter(recipes => recipes.idMeal !== _id ? recipes : null)
+          return {
+            ...userState,
+            recipe: filtered
+          }
+        })})
       .catch(err => err.response.data.message)
   }
-  
   return (
-   
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant='primary' onClick={handleShow}>
         See More!
       </Button>
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header >
           <Modal.Title>This Meal Is {props.meal.strMeal}</Modal.Title>
@@ -65,30 +60,22 @@ function RecipeInst(props) {
           <li>{props.meal.strIngredient14}</li>
           <li>{props.meal.strIngredient15}</li>
           <li>{props.meal.strIngredient16}</li>
-
           {props.meal.strInstructions}
-
-
-
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant='secondary' onClick={handleClose}>
             Close
           </Button>
           {
-           
             userState.recipe.some(item => item.strMeal.includes(props.meal.strMeal) ) ?
-                (<Button variant="danger" onClick={() => handleDeleteFav(_id)}>Remove From Favorites</Button>
+                (<Button variant='danger' onClick={() => handleDeleteFav(_id)}>Remove From Favorites</Button>
               ) :
                 ( <Button variant='primary' onClick={handleFavs} >
                 Add To Favorites
               </Button> )}
         </Modal.Footer>
-
       </Modal>
     </>
   );
-
 }
-
 export default RecipeInst

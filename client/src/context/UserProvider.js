@@ -17,7 +17,6 @@ function UserProvider(props) {
         recipe: [],
         ingredients: [],
         errMsg: '',
-        comments: []
     }
 
     const [allIngredients, setAllIngredients] = React.useState([])
@@ -62,7 +61,6 @@ function UserProvider(props) {
         setUserState({
             user: {},
             token: '',
-            comments: [],
             recipe: [],
             ingredients: []
         })
@@ -80,17 +78,7 @@ function UserProvider(props) {
             errMsg: ''
         }))
     }
-    function getAllComments() {
-        userAxios.get(`/api/comment/${userState.comments}`)
-            .then(res => {
-                console.log(res.data)
-                setUserState(prevUserState => ({
-                    ...prevUserState,
-                    comments: [res.data]
-                }))
-            })
-            .catch(err => console.log(err))
-    }
+    
     function getUserIngredients() {
         userAxios.get(`/api/ingredients/${userState.user._id}`)
             .then(res => setUserState(prevUserState => ({
@@ -172,7 +160,6 @@ function UserProvider(props) {
                 logout,
                 addIngredients,
                 addRecipes,
-                getAllComments,
                 getAllRecipes,
                 getUserIngredients,
                 getUserRecipes,

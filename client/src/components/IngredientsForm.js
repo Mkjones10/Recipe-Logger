@@ -1,10 +1,12 @@
 import React from 'react'
+import {Button }from 'react-bootstrap'
 
 const initInputs = {
     name: '',
     boughtAt: '',
     description: ''
 }
+
 
 function IngredientsForm(props) {
 
@@ -28,13 +30,15 @@ function IngredientsForm(props) {
     const { name, boughtAt, description } = inputs
     return (
         <>
-            <form onSubmit={handleSubmit} className ='pf'>
+        <div className ='header'>
+            <form  className ='pf'>
                 <input type="text" name='name' className='pin' value={name} onChange ={handleChange} placeholder ='Name'/>
                 <input type="text" name='boughtAt' className='pin' value={boughtAt} onChange ={handleChange} placeholder='Bought At'/>
-                <input type="text" name='description' className='pin' value={description} onChange ={handleChange} placeholder ='Description'/>
-                <button className='ingbtn'>Add Ingredients</button>
-
             </form> 
+            <Button variant='secondary' onClick ={handleSubmit} size ='sm'>
+                Add Ingredients
+              </Button>
+              </div>
         </>
     )
 }
