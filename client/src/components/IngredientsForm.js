@@ -33,7 +33,7 @@ function IngredientsForm(props) {
         <div className ='header'>
             <form  className ='pf'>
                 <input type="text" name='name' className='pin' value={name} onChange ={handleChange} placeholder ='Name'/>
-                <input type="text" name='boughtAt' className='pin' value={boughtAt} onChange ={handleChange} placeholder='Bought At'/>
+                <input type="date" name='boughtAt' className='pin' value={boughtAt} onChange ={handleChange} placeholder='Bought At'/>
             </form> 
             <Button variant='secondary' onClick ={handleSubmit} size ='sm'>
                 Add Ingredients

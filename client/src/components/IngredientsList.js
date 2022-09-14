@@ -14,12 +14,10 @@ export default function IngredientsList(props) {
 
     
     return (
-        console.log(userState.ingredients._id),
         <>
 
             <div className="list">
-                {/* {myIngredients} */}
-                {/* <h1>{userState.ingredients[0]}</h1> */}
+               
                 {userState.ingredients ? <>
                 
 

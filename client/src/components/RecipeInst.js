@@ -6,10 +6,40 @@ function RecipeInst(props) {
   const [show, setShow] = useState(false);
   const {meal, _id} = props
   const recipe = userState.recipe
-  console.log('all Recipes: ', allRecipes)
+                        
+  const ingredientArr= []
+  ingredientArr.push(
+    props.meal.strIngredient1,
+    props.meal.strIngredient2,
+    props.meal.strIngredient3,
+    props.meal.strIngredient4,
+    props.meal.strIngredient5,
+    props.meal.strIngredient6,
+    props.meal.strIngredient7,
+    props.meal.strIngredient8,
+    props.meal.strIngredient9,
+    props.meal.strIngredient10,
+    props.meal.strIngredient11,
+    props.meal.strIngredient12,
+    props.meal.strIngredient13,
+    props.meal.strIngredient14,
+    props.meal.strIngredient15,
+    props.meal.strIngredient16 
+    ) 
   // const id = recipe.map(ig =>{
   //   return ig._id
   //   })
+  
+  const ingreList = ingredientArr.map(ingredient =>{
+    if(ingredient == ''){
+      return (
+        <div></div>
+      )
+    }
+    return(
+      <li>{ingredient}</li>
+    )
+  })
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   function handleFavs() {
@@ -44,22 +74,7 @@ function RecipeInst(props) {
           <Modal.Title>This Meal Is {props.meal.strMeal}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <li>{props.meal.strIngredient1}</li>
-          <li>{props.meal.strIngredient2}</li>
-          <li>{props.meal.strIngredient3}</li>
-          <li>{props.meal.strIngredient4}</li>
-          <li>{props.meal.strIngredient5}</li>
-          <li>{props.meal.strIngredient6}</li>
-          <li>{props.meal.strIngredient7}</li>
-          <li>{props.meal.strIngredient8}</li>
-          <li>{props.meal.strIngredient9}</li>
-          <li>{props.meal.strIngredient10}</li>
-          <li>{props.meal.strIngredient11}</li>
-          <li>{props.meal.strIngredient12}</li>
-          <li>{props.meal.strIngredient13}</li>
-          <li>{props.meal.strIngredient14}</li>
-          <li>{props.meal.strIngredient15}</li>
-          <li>{props.meal.strIngredient16}</li>
+          {ingreList}
           {props.meal.strInstructions}
         </Modal.Body>
         <Modal.Footer>
@@ -68,7 +83,7 @@ function RecipeInst(props) {
           </Button>
           {
             userState.recipe.some(item => item.strMeal.includes(props.meal.strMeal) ) ?
-                (<Button variant='danger' onClick={() => handleDeleteFav(_id)}>Remove From Favorites</Button>
+                (<Button variant='danger' onClick={() =>  handleDeleteFav(recipe._idMeal)}>Remove From Favorites</Button>
               ) :
                 ( <Button variant='primary' onClick={handleFavs} >
                 Add To Favorites

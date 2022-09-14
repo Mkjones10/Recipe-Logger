@@ -38,7 +38,7 @@ recipeRouter.get('/:userId', (req, res, next) => {
 })
 
 recipeRouter.get('/:recipeId', (req, res, next) => {
-    Recipe.findOneById(req.params.recipeId, (err, recipe) => {
+    Recipe.findOne({_id: req.params.recipeId}, (err, recipe) => {
         if (err) {
             res.status(500)
             return next(err)
@@ -50,7 +50,7 @@ recipeRouter.get('/:recipeId', (req, res, next) => {
 
 
 recipeRouter.delete('/:recipeId', (req, res, next) =>{
-    Recipe.findOneAndDelete({idMeal: req.params.recipeId, user: req.auth._id}, (err, deletedRecipe) => {
+    Recipe.findOneAndDelete({_id: req.params.recipeId}, (err, deletedRecipe) => {
         if(err){
             res.status(404)
             return next(err)
@@ -60,3 +60,4 @@ recipeRouter.delete('/:recipeId', (req, res, next) =>{
     })
 })
 module.exports = recipeRouter
+//please add to github or i may cry
