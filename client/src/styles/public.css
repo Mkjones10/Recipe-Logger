@@ -1,15 +1,6 @@
-.search{
-    
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-
-}
-.head{
+.head203{
     background-image: linear-gradient(rgba(0,0,0,0.6) , rgba(0,0,0,0.8)),
-    url("https://media.istockphoto.com/photos/food-backgrounds-table-filled-with-large-variety-of-food-picture-id1155240408?k=20&m=1155240408&s=612x612&w=0&h=Zvr3TwVQ-wlfBnvGrgJCtv-_P_LUcIK301rCygnirbk=");
+    url("https://wp.salesforce.com/blog/wp-content/uploads/sites/2/2020/06/salesforce-equality-LGBTQ-support-black-community.png");
     height: 500px;
     background-repeat: no-repeat;
     background-position: center;
@@ -19,74 +10,138 @@
     align-items: center;
     flex-direction: column;
 }
-.input{
-    margin: 10px 0;
-    padding: 10px;
-    outline: none;
-    border: 1px solid #ccc;
-    width: 500px;
-    font-size: 18px;
-    border-radius: 10px;
-}
-.searchbtn{
-    font-size: 18px;
-    border: 1px solid #ff4500;
-    padding: 5px;
+.h1{
     color: #fff;
-    background: 	#FF4500;
-    margin-left: 10px;
-    border-radius: 5px;
-    outline: none;
-    cursor: pointer;
-    transition:  .4 ease ;
-
-   
-    
 }
-
-.result{
+.h2{
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-evenly;
-   
-    flex-wrap: wrap;
-    cursor: pointer;
-
-    
+    flex-direction: column;   
 }
-.meal{
-    text-align: center;
+.why{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+ background-color: black;
+  
+    color: #fff ;
+
+}
+.whyp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 30px;
+}
+.mentals{
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+    gap: 20px;
+}
+.p1{
+   
+    
+    font-size: 20px;
+    height: 200px;
+    width: 350px;
+}
+
+.head2{
+    background-image: linear-gradient(rgba(0,0,0,0.6) , rgba(0,0,0,0.8)),
+    url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq2goVIFoZMom8efpPiQsIvHI0DNXxygSg3dz14r0NRT_VUH6B-srNriisJvJZINC0-iY&usqp=CAU");
+    height: 500px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.heady{
+    background-image: linear-gradient(rgba(0,0,0,0.6) , rgba(0,0,0,0.8)),
+    url("https://i0.wp.com/theblackwallsttimes.com/wp-content/uploads/2019/04/800px-PresidentObamaMLKSchoolNOLAOct2009Handshakes.jpg?fit=800%2C533&ssl=1");
+    height: 500px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.head22{
+    background-image:
+    url("https://cloudfront-us-east-1.images.arcpublishing.com/tronc/JJAKT5QR7JH73FHPS5EPOA5ISI.jpg");
+    height: 500px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.lh{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .img{
-    width: 200px;
-    border: 1px solid #ccc;
-    margin: 10px;
-    transition: all .4 ease ;
-    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
-.img:hover{
-    transform: scale(1.1);
+.econ{
+    background-image:
+    url("https://i5.walmartimages.com/asr/5d33c79f-d436-44dc-812c-b3bdcaccce15.3f49cdd4c195c281281d25be82f7036a.jpeg?odnWidth=1000&odnHeight=1000&odnBg=ffffff");
+    height: 500px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
-.in{
-    width: 200px;
+.li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
-.btn{
-    background-color: blue;
-    color: #fff;
-    cursor: help;
+.list{
+    font-size: 25px;
+    font-weight: bold;
 }
-.btn1{
-    background-color: grey;
-    color: #ccc;
-    width:200px;
-  
+.stat{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: cover;
+    height: 700px;
+    width: 90%;
 }
-.btn2{
-    background-color: blue;
-    color: #ccc;
-    width: 200px;
-
-}
-.h1{
-    color: #ccc;
-}
+.stylely{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        height: 750px;
+        width:100% ;
+        background-repeat: no-repeat;
+    }
+    .style2{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+            height: 750px;
+            width:100% ;
+            background-repeat: no-repeat;
+        }

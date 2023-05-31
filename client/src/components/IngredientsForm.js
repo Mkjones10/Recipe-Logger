@@ -4,7 +4,8 @@ import {Button }from 'react-bootstrap'
 const initInputs = {
     name: '',
     boughtAt: '',
-    description: ''
+    description: '',
+    imgurl: ''
 }
 
 
@@ -27,16 +28,18 @@ function IngredientsForm(props) {
         setInputs(initInputs)
     }
 
-    const { name, boughtAt, description } = inputs
+    const { name, boughtAt, description, imgurl } = inputs
     return (
         <>
         <div className ='header'>
             <form  className ='pf'>
-                <input type="text" name='name' className='pin' value={name} onChange ={handleChange} placeholder ='Name'/>
+                <input type="text" name='name' className='pin' value={name} onChange ={handleChange} placeholder ='Title'/>
                 <input type="date" name='boughtAt' className='pin' value={boughtAt} onChange ={handleChange} placeholder='Bought At'/>
+                <input type="text" name='description' className='pin' value={description} onChange ={handleChange} placeholder='Description'/>
+                <input type='imgurl' name='imgurl' className='pin' value={imgurl} onChange={handleChange} placeholder='insert image here'/>
             </form> 
             <Button variant='secondary' onClick ={handleSubmit} size ='sm'>
-                Add Ingredients
+                Add A Post
               </Button>
               </div>
         </>

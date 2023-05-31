@@ -13,6 +13,9 @@ const ingredientsSchema = new Schema({
         type: String,
         
     },
+    imgurl:{
+        type: String
+    },
     isUsed:{
         type:Boolean,
         default: false

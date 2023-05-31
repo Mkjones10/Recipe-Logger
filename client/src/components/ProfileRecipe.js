@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import { UserContext } from '../context/UserProvider'
 function ProfileRecipe(props) {
-  const { user, userAxios, setUserState, userState, setAllRecipes , meals,} = React.useContext(UserContext)
+  const { user, userAxios, setUserState, userState, setAllRecipes , meals,getUserRecipes} = React.useContext(UserContext)
   const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -31,6 +31,7 @@ function ProfileRecipe(props) {
   // const id = recipe.map(ig =>{
   //   return ig._id
   //   })
+  console.log(props.favorite._id)
   function handleDeleteFav() {
     userAxios.delete(`/api/recipe/${props.favorite._id}`)
       .then(res => {
@@ -41,10 +42,11 @@ function ProfileRecipe(props) {
             ...userState,
             recipe: filtered
           }
-        })})
+        })
+        getUserRecipes()
+      })
       .catch(err => err.response.data.message)
   }
-  
   const ingreList = newArr.map(ingredient =>{
     if(ingredient == ''){
       return (

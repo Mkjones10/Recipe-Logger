@@ -52,9 +52,11 @@ function RecipeInst(props) {
       })
       .catch(err => console.log(err))
   }
+  
   function handleDeleteFav() {
-    userAxios.delete(`/api/recipe/${_id}`)
+    userAxios.delete(`/api/public/${props.meal.idMeal}`)
       .then(res => {
+        console.log(res.data)
         setUserState(userState => {
           const filtered = userState.recipe.filter(recipes => recipes.idMeal !== _id ? recipes : null)
           return {

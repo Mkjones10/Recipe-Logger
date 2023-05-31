@@ -144,10 +144,10 @@ function UserProvider(props) {
         })
         .catch(err=>console.log(err))
     },[])
-    React.useEffect(() => {
-        getUserIngredients()
-        getUserRecipes()
-    }, [])
+    // React.useEffect(() => {
+    //     getUserIngredients()
+    //     getUserRecipes()
+    // }, [])
     
 
     return (
