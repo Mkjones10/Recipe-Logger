@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import AuthForm from './AuthForm'
 import { UserContext } from '../context/UserProvider'
 import '../styles/auth.css'
-import Pride from './pride.jpg'
+import Chef from './Chef.jpg'
 const initInputs = { username: '', password: '' }
 
 export default function Auth() {
@@ -38,8 +38,8 @@ export default function Auth() {
     return (
         <>
             <div className="container">
-                <h1 className='rock'>Welcome To The LGBT Blog!</h1>
-                <img src={Pride} />
+                <h1 className='rock'>Welcome To The Recipe Logger!</h1>
+                <img src={Chef} />
                 {!toggle ?
                     <>
                         <AuthForm

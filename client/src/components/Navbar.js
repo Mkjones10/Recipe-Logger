@@ -7,7 +7,7 @@ export default function Navbar(props){
     return(
         <div className="navbar">
             <div className="nav-head">
-                LGBT Activism Blog
+                Recipe Logger
             </div>
             <div className="nav-links">
                 <Link to ='/profile'>Profile</Link>
