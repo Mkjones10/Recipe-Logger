@@ -20,7 +20,18 @@ app.use((err,req,res,next)=>{
         res.status(err.status)
     }
     return res.send({message:err.message})
+    
 })
-app.listen(8000, ()=>{
+const path = require("path")
+
+// ... other app.use middleware
+app.use(express.static(path.join(__dirname, "client", "dist")))
+
+// ...
+// Right before your app.listen(), add this:
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
+app.listen(8001, ()=>{
     console.log('hello ')
 })
