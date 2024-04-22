@@ -13,6 +13,7 @@ const userSchema = new Schema({
         type: String,
         required:true
     },
+               
     memberSince:{
         type: Date,
         default: Date.now
@@ -40,10 +41,18 @@ userSchema.pre('save', function(next){
 
 userSchema.methods.checkPassword = function(passwordAttempt, callback) {
     bcrypt.compare(passwordAttempt, this.password, (err, isMatch) => {
-        if(err) callback(err)
-        return callback(null, isMatch)
-    })
-}
+        if (err) {
+            if (callback) {
+                return callback(err);
+            }
+            return Promise.reject(err); // Promisify error handling if no callback is provided
+        }
+        if (callback) {
+            return callback(null, isMatch);
+        }
+        return Promise.resolve(isMatch); // Promisify result if no callback is provided
+    });
+};
 
 userSchema.methods.withoutPassword = function(){
     const user = this.toObject()

@@ -30,7 +30,7 @@ export default function IngredientsList(props) {
                             <h1>{ingredients.name}</h1>
                             <p>{ingredients.boughtAt}</p>
                             <p className='text'>{ingredients.description}</p>
-                            <p className='text'>{ingredients.imgurl}</p>
+                           
                            
                             
                             </div>

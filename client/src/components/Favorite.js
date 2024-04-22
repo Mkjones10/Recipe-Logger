@@ -9,7 +9,7 @@ function Favorite() {
 
   return (
     <div>
-      <h2>Saved Recipes</h2>
+      <h2 className='fav2'>Saved Recipes</h2>
       <div className="fav">
         {userState.recipe.length > 0 ? userState.recipe.map((favorite, index) => (
           <div className="meals" key={index}>
@@ -21,7 +21,7 @@ function Favorite() {
       
 
           </div>
-        )) : <div className='fave'>
+        )) : <div className='e1'>
           <h2>You havent saved any recipes</h2>
           <Link to="/public"><Button>Please Add Some</Button></Link>
         </div>}

@@ -11,14 +11,21 @@ userAxios.interceptors.request.use(config => {
 })
 
 function UserProvider(props) {
+    const storedUser = localStorage.getItem('user');
+    let parsedUser = {};
+    try {
+        parsedUser = JSON.parse(storedUser) || {};
+    } catch (error) {
+        console.error('Error parsing user data from localStorage:', error);
+    }
+    
     const initState = {
-        user: JSON.parse(localStorage.getItem('user')) || {},
+        user: parsedUser,
         token: localStorage.getItem('token') || '',
         recipe: [],
         ingredients: [],
         errMsg: '',
-    }
-
+    };
     const [allIngredients, setAllIngredients] = React.useState([])
     const [allRecipes, setAllRecipes] = React.useState([])
 

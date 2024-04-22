@@ -1,5 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {Button }from 'react-bootstrap'
+
 import '../styles/navbar.css'
 
 export default function Navbar(props){
@@ -12,7 +14,7 @@ export default function Navbar(props){
             <div className="nav-links">
                 <Link to ='/profile'>Profile</Link>
                 <Link to="/public">Public</Link>
-                <button onClick={logout}>Logout</button>
+                <Button variant='danger' onClick={logout}>Logout</Button>
             </div>
         </div>
     )

@@ -1,8 +1,43 @@
-.navbar{
+/* For mobile devices */
+@media only screen and (max-width: 600px) {
+    .nav-links {
+      display: none; /* Hide the links by default on mobile */
+      flex-direction: column; /* Align links vertically */
+      position: absolute; /* Position links absolutely */
+      top: 100%; /* Position links below the navbar */
+      left: 0;
+      width: 100%;
+      background-color: #fff; /* Background color for the links */
+      border-top: 1px solid #ccc; /* Add border at the top */
+      padding: 10px 0; /* Add padding */
+      z-index: 100; /* Ensure links are on top of other content */
+    }
+  
+    .nav-links a {
+      display: block; /* Display links as block elements */
+      padding: 10px 20px; /* Add padding to each link */
+      font-size: 18px;
+      color: black;
+      text-decoration: none;
+    }
+  
+    .nav-links a:hover {
+      background-color: #f0f0f0; /* Change background color on hover */
+    }
+  
+    .hamburger {
+      display: block; /* Show the hamburger menu */
+      margin-right: 20px; /* Add margin for spacing */
+      cursor: pointer; /* Change cursor to pointer on hover */
+    }
+  }
+  
+  /* For larger screens */
+  .navbar {
     min-width: 100%;
     min-height: 15vh;
     background-color: #fff;
-    color:black;
+    color: black;
     background-repeat: no-repeat;
     align-items: center;
     background-position: center;
@@ -12,36 +47,38 @@
     position: sticky;
     top: 0;
     left: 0;
-    z-index:50 ;
+    z-index: 50;
+  }
   
-}
-.nav-head{
+  .nav-head {
     margin-left: 20px;
     font-size: 30px;
-
-}
-.navspan{
+  }
+  
+  .navspan {
     color: #fff;
-    
-}
-.nav-links{
+  }
+  
+  .nav-links {
     display: flex;
     text-decoration: none;
-   
-}
-.nav-links ul {
+  }
+  
+  .nav-links ul {
     display: flex;
     list-style: none;
     flex-direction: row;
-}
-
-.nav-links a{
-     color:black;
+  }
+  
+  .nav-links a {
+    color: black;
     text-decoration: none;
     margin: 0 10px;
     border: 10px;
     font-size: 20px;
-}
-.nav-links a:hover{
+  }
+  
+  .nav-links a:hover {
     color: red;
-}
+  }
+  

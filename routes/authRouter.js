@@ -1,55 +1,56 @@
-const express = require('express')
-const authRouter = express.Router()
-const User = require('../models/user.js')
-const jwt = require('jsonwebtoken')
+const express = require('express');
+const authRouter = express.Router();
+const User = require('../models/user.js');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
-authRouter.post('/signup', (req, res, next) => {
-    // console.log('body', req?.body?.username)
-    User.findOne({ username: req?.body?.username?.toLowerCase() }, (err, user) => {
-        if (err) {
-            res.status(500)
-            return next(err)
+authRouter.post('/signup', async (req, res, next) => {
+    try {
+        const existingUser = await User.findOne({ username: req?.body?.username?.toLowerCase() });
+
+        if (existingUser) {
+            return res.status(403).send({ message: "That username is already taken" });
         }
-        if (user) {
-            res.status(403)
-            return next(new Error("That username is already taken"))
-        }
-        const newUser = new User(req.body)
-        newUser.save((err, savedUser) => {
-            if (err) {
-                res.status(500)
-                return next(err)
-            }
-            const token = jwt.sign(savedUser.withoutPassword(), process.env.SECRET)
-            return res.status(200).send({ token, user: savedUser.withoutPassword() })
-        })
-    })
-})
-authRouter.post('/login', (req, res, next) => {
-    User.findOne({ username: req.body.username.toLowerCase() }, (err, user) => {
-        console.log(req.body)
-        if (err) {
-            res.status(500)
-            return next(err)
-        }
+
+        // Hash the password before saving it
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+        // Create a new user object with hashed password
+        const newUser = new User({
+            username: req.body.username.toLowerCase(),
+            password: hashedPassword
+        });
+
+        const savedUser = await newUser.save();
+
+        const token = jwt.sign(savedUser.withoutPassword(), process.env.SECRET);
+        return res.status(200).send({ token, user: savedUser.withoutPassword() });
+    } catch (err) {
+        res.status(500);
+        return next(err);
+    }
+});
+
+authRouter.post('/login', async (req, res, next) => {
+    try {
+        const user = await User.findOne({ username: req.body.username?.toLowerCase() });
+
         if (!user) {
-            res.status(403)
-            return next(new Error('Username or password are incorrect, try again'))
+            return res.status(403).send({ message: 'Username or password are incorrect, try again' });
         }
-        user.checkPassword(req.body.password, (err, isMatch) => {
-            if (err) {
-                res.status(403)
-                return next(new Error("Username or password is incorrect"))
-            }
-            if (!isMatch) {
-                res.status(403)
-                return next(new Error('Username or password is incorrect'))
-            }
-            const token = jwt.sign(user.withoutPassword(), process.env.SECRET)
-            return res.status(200).send({ token, user : user.withoutPassword() })
-        })
 
-    })
-})
+        // Compare the provided password with the hashed password stored in the database
+        const isMatch = await bcrypt.compare(req.body.password, user.password);
 
-module.exports = authRouter
+        if (!isMatch) {
+            return res.status(403).send({ message: 'Username or password is incorrect' });
+        }
+
+        const token = jwt.sign(user.withoutPassword(), process.env.SECRET);
+        return res.status(200).send({ token, user: user.withoutPassword() });
+    } catch (err) {
+        return next(err);
+    }
+});
+
+module.exports = authRouter;
